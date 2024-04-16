@@ -28,5 +28,5 @@ RUN python manage.py collectstatic --noinput --clear
 EXPOSE 8000
 
 # Run application
-CMD gunicorn --bind=0.0.0.0:8000 --workers=5 --threads=5 shopping_list.wsgi:application
+CMD gunicorn --bind=0.0.0.0:8000 --workers=5 --threads=5 fashionpedia_frontend.wsgi:application
 # CMD python manage.py runserver 0.0.0.0:8000
