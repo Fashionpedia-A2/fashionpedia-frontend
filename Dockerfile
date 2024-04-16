@@ -9,7 +9,8 @@ ENV PYTHONUNBUFFERED=1 \
     WEB_CONCURRENCY=2
 
 # Install system packages required Django.
-RUN sudo apt-get update --yes --quiet && sudo apt-get install --yes --quiet --no-install-recommends
+RUN apt-get update --yes --quiet && apt-get install --yes --quiet --no-install-recommends \
+&& rm -rf /var/lib/apt/lists/*
 
 # Requirements are installed here to ensure they will be cached.
 COPY ./requirements.txt /requirements.txt
