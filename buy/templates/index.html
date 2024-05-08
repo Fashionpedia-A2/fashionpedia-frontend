@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <button id="fetchButton">Fetch Data</button>
+    <div id="data"></div>
+</body>
+<script>
+    function fetchData(url) {
+        $.ajax({
+            url: url,
+            type: 'GET',
+            success: function(data) {
+                $('#data').html(data);
+            },
+            error: function() {
+                console.log('Error');
+            }
+        });
+    }
+
+    $('#fetchButton').on('click', function() {
+        fetchData('http://localhost:8080/buyer/listing');
+        //http://localhost:8080/buyer/listing
+    });
+</script>
+</html>
