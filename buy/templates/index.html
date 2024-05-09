@@ -16,7 +16,19 @@
             url: url,
             type: 'GET',
             success: function(data) {
-                $('#data').html(data);
+                console.log(data);
+                var html = '';
+                for (var i = 0; i < data.length; i++) {
+                    html += '<div>';
+                    html += '<h2>' + data[i].name + '</h2>';
+                    html += '<img src="' + data[i].imageUrl + '" alt="' + data[i].name + '">';
+                    html += '<p>Stock: ' + data[i].stock + '</p>';
+                    html += '<p>Price: ' + data[i].price + '</p>';
+                    html += '<p>Size: ' + data[i].size + '</p>';
+                    html += '<p>Condition: ' + data[i].condition + '</p>';
+                    html += '</div>';
+                }
+                $('#data').html(html);
             },
             error: function() {
                 console.log('Error');
@@ -26,7 +38,7 @@
 
     $('#fetchButton').on('click', function() {
         fetchData('http://localhost:8080/buyer/listing');
-        //http://localhost:8080/buyer/listing
+        //fetchData('http://buysell.fashionpedia.my.id/buyer/listing');
     });
 </script>
 </html>
