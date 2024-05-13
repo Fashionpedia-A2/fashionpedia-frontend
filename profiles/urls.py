@@ -14,13 +14,9 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path, include
-from fashionpedia_frontend import views
+from django.urls import path
+from profiles import views
 
 urlpatterns = [
-    path('', views.welcome),
-    path('admin/', admin.site.urls),
-    path('welcome/', include('welcome.urls')),
-    path('profile/', include('profiles.urls')),
+    path('', views.profile, name='profile'),
 ]
