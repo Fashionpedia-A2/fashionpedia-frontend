@@ -21,3 +21,31 @@ Container Diagram
 
 Deployment Diagram
 ![alt text](img/deployment.jpg)
+
+Component Diagram
+- Rafi Ghani Harditama
+
+- Sefriano Edsel Jieftara Djie
+
+- Nabil Muhammad Azzam
+
+- Ilham Abdillah Alhamdi
+
+- Fredo Melvern Tanzil
+![alt text](<img/component fredo.jpg>)
+
+
+Code Diagram
+- Rafi Ghani Harditama
+
+- Sefriano Edsel Jieftara Djie
+
+- Nabil Muhammad Azzam
+
+- Ilham Abdillah Alhamdi
+
+- Fredo Melvern Tanzil
+![alt text](<img/code fredo.jpg>)
+
+### Risk Analyzing
+
