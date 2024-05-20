@@ -59,3 +59,4 @@ Discuss it and the write a well written an concise explanation why the risk stor
 Explanation storming technique, risk analysis, architecture modification justification: <insert here>
 
 Tabel Container Diagram Redraw:
+![alt text](<img/container recreate.jpg>)
