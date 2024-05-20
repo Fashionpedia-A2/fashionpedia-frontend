@@ -48,4 +48,14 @@ Code Diagram
 ![alt text](<img/code fredo.jpg>)
 
 ### Risk Analyzing
+Tabel Risk Assesment:
+![alt text](<risk assessment.jpg>)
+Penjelasan:
 
+Tabel Context Diagram Redraw:
+![alt text](<context redraw.jpg>)
+
+Discuss it and the write a well written an concise explanation why the risk storming technique is applied. Write it your Readme.md project repository. 
+Explanation storming technique, risk analysis, architecture modification justification: <insert here>
+
+Tabel Container Diagram Redraw:
