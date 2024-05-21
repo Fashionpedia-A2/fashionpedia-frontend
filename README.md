@@ -41,6 +41,8 @@ Code Diagram
 - Sefriano Edsel Jieftara Djie
 
 - Nabil Muhammad Azzam
+![image](https://github.com/Fashionpedia-A2/fashionpedia-frontend/assets/71275597/b812cc00-25b6-46bb-9236-5074f89c066e)
+
 
 - Ilham Abdillah Alhamdi
 
