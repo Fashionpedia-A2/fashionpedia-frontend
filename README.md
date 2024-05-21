@@ -29,6 +29,10 @@ Component Diagram
 
 - Nabil Muhammad Azzam
 
+![image](https://github.com/Fashionpedia-A2/fashionpedia-frontend/assets/71275597/a97857a5-ba5b-4fbe-8128-64da1b95f1c6)
+
+
+
 - Ilham Abdillah Alhamdi
 
 - Fredo Melvern Tanzil
@@ -41,6 +45,7 @@ Code Diagram
 - Sefriano Edsel Jieftara Djie
 
 - Nabil Muhammad Azzam
+
 ![image](https://github.com/Fashionpedia-A2/fashionpedia-frontend/assets/71275597/b812cc00-25b6-46bb-9236-5074f89c066e)
 
 
