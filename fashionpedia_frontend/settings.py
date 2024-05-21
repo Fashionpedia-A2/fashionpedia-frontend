@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'welcome',
     'buy',
     'django_prometheus'
+
 ]
 
 MIDDLEWARE = [
