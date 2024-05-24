@@ -1,0 +1,216 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fashionpedia | Manage Your Listings</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style type="text/tailwindcss">
+    @layer components {
+      * {
+        @apply box-border;
+      }
+      .btn-primary {
+        @apply bg-black hover:bg-gray-800 text-white rounded-lg cursor-pointer;
+      }
+
+      .btn-secondary {
+        @apply bg-white hover:bg-gray-50 border border-black rounded-lg text-black cursor-pointer ;
+      }
+      tbody td, thead th {
+        @apply py-2 px-4 text-start
+      }
+
+      .nav-page {
+        @apply h-8 w-8 flex justify-center items-center rounded-full hover:bg-gray-50
+      }
+
+      .nav-page-selected {
+        @apply border bg-gray-200 hover:bg-gray-300
+      }
+
+      .dropdown-button {
+        @apply flex w-full justify-center items-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50
+      }
+
+      .dropdown-item {
+        @apply w-full text-start text-gray-700 hover:bg-gray-100 hover:text-gray-900 block px-4 py-2 text-sm
+      }
+
+      .dropdown-menu-container {
+        @apply absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none
+      }
+
+      .side-menu {
+        @apply flex justify-center items-center p-2 rounded-2xl hover:bg-gray-100
+      }
+
+      .side-menu-selected {
+        @apply bg-gray-200 hover:bg-gray-300 
+      }
+
+      .side-expanded {
+        @apply min-w-[200px]
+      }
+
+      .filter-status-button {
+        @apply py-1 px-4 rounded-xl hover:bg-gray-100
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100">
+  <main class="w-full min-h-screen flex flex-row px-4 py-8 2xl:container mx-auto gap-4">
+    <nav id="navbar" class="side-expanded bg-white rounded-3xl flex flex-col gap-y-4 px-2 py-8">
+      <div class="border-b">
+        <button id="sidebar-toggle-button" aria-expanded="true" title="Toggle Menu"
+          class="w-full p-2 text-gray-500 hover:text-gray-950">
+          <i id="sidebar-toggle-icon" class="fa-solid fa-chevron-left mr-2"></i>
+          <span class="side-menu-text font-semibold">Hide menu</span>
+        </button>
+      </div>
+      <a href="#" title="My Listing" class="side-menu side-menu-selected">
+        <i class="fa-solid fa-box mr-2 text-2xl text-gray-600"></i>
+        <span class="side-menu-text text-lg">My Listing</span>
+      </a>
+      <a href="#" title="Store Order" class="side-menu">
+        <i class="fa-solid fa-clipboard-list mr-2 text-2xl text-gray-600"></i>
+        <span class="side-menu-text text-lg">Store Order</span>
+      </a>
+    </nav>
+    <section class="min-w-[800px] w-full bg-white rounded-3xl p-8 relative">
+      <div class="flex flex-row justify-between">
+        <h1 class="text-3xl font-semibold">Listings</h1>
+        <div class="flex gap-x-4">
+          <input type="text" name="search" id="search" placeholder="Search listing..."
+            class="bg-gray-100 rounded-lg px-4 py-2 placeholder-gray-600">
+          <a href="#" class="btn-secondary px-4 py-2">
+            <i class="fa-solid fa-plus"></i>
+            <span>Add New Listing</span>
+          </a>
+        </div>
+      </div>
+      <div class="flex justify-between mt-4">
+        <div class="flex gap-x-2">
+          <button data-status="all" class="filter-status-button">All</button>
+          <button data-status="active" class="filter-status-button">Active</button>
+          <button data-status="inactive" class="filter-status-button">Inactive</button>
+        </div>
+        <div>
+          <div class="relative inline-block text-left">
+            <div>
+              <button type="button" class="dropdown-button" id="dropdown-sort" aria-expanded="false"
+                aria-haspopup="true">
+                Sort By <span id="sort-value"></span>
+                <i class="fa-solid fa-chevron-down text-gray-500"></i>
+              </button>
+            </div>
+            <div class="dropdown-menu-container hidden" role="menu" aria-orientation="vertical"
+              aria-labelledby="dropdown-sort" tabindex="-1">
+              <div class="py-1" role="none">
+                <button class="dropdown-item sort-by-button" role="menuitem" data-sort="name-ASC">
+                  <span>Nama (A-Z)</span>
+                </button>
+                <button class="dropdown-item sort-by-button" role="menuitem" data-sort="name-DESC">
+                  <span>Nama (Z-A)</span>
+                </button>
+                <button class="dropdown-item sort-by-button" role="menuitem" data-sort="price-DESC">
+                  <span>Harga Tertinggi</span>
+                </button>
+                <button class="dropdown-item sort-by-button" role="menuitem" data-sort="price-ASC">
+                  <span>Harga Terendah</span>
+                </button>
+                <button class="dropdown-item sort-by-button" role="menuitem" data-sort="stock-DESC">
+                  <span>Stok Terbanyak</span>
+                </button>
+                <button class="dropdown-item sort-by-button" role="menuitem" data-sort="stock-ASC">
+                  <span>Stok Tersedikit</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <table class="w-full my-8 table-fixed">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="w-[5%]">ID</th>
+            <th class="w-[45%]">Listing</th>
+            <th class="w-[14%]">Price</th>
+            <th class="w-[14%]">Stock</th>
+            <th class="w-[10%]">Status</th>
+            <th class="w-[12%]">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-y">
+            <td>1</td>
+            <td class="flex">
+              <a href="#" class="">
+                <img
+                  src="https://images.tokopedia.net/img/cache/700/VqbcmM/2020/9/28/b5fbee90-9616-4e93-a8b1-1971b884ca5f.jpg"
+                  class="h-16 w-16">
+              </a>
+              <div class="flex flex-col w-full overflow-hidden">
+                <a href="#" class="text-lg font-semibold text-nowrap text-ellipsis overflow-hidden"
+                  title="Celana Denim Pria Lorem ipsum dolor sit amet consectetur adipisicing elit.">Celana Denim Pria
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.</a>
+                <span>33 EU</span>
+              </div>
+            </td>
+            <td>Rp300.000</td>
+            <td>10</td>
+            <td>
+              <span class="block bg-green-200 text-green-800 rounded-full text-center py-1">Active</span>
+            </td>
+            <td>
+              <div class="relative inline-block text-left">
+                <div>
+                  <button type="button" class="dropdown-button" id="dropdown-manage-listing-1" aria-expanded="false"
+                    aria-haspopup="true">
+                    Manage
+                    <i class="fa-solid fa-chevron-down text-gray-500"></i>
+                  </button>
+                </div>
+                <div class="dropdown-menu-container hidden" role="menu" aria-orientation="vertical"
+                  aria-labelledby="dropdown-manage-listing-1" tabindex="-1">
+                  <div class="py-1" role="none">
+                    <a href="#" class="dropdown-item" role="menuitem" tabindex="-1">
+                      <i class="fa-solid fa-pen-to-square mr-4"></i>
+                      <span>Edit</span>
+                    </a>
+                    <a href="#" class="dropdown-item" role="menuitem" tabindex="-1">
+                      <i class="fa-solid fa-trash mr-4"></i>
+                      <span>Delete</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div
+        class="absolute bottom-0 left-0 bg-white w-full h-16 flex items-center justify-between px-4 rounded-3xl shadow-2xl ring-1 ring-black ring-opacity-10">
+        <span>Showing 1 to 10 of 20 results</span>
+        <div class="flex gap-x-2">
+          <a href="#" class="nav-page border"><i class="fa-solid fa-chevron-left"></i></a>
+          <a href="#" class="nav-page nav-page-selected">1</a>
+          <a href="#" class="nav-page">2</a>
+          <a href="#" class="nav-page">3</a>
+          <a href="#" class="nav-page border"><i class="fa-solid fa-chevron-right"></i></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="https://kit.fontawesome.com/154556051d.js" crossorigin="anonymous"></script>
+  <script src="{% static 'js/seller_listing.js' %}" type='module'></script>
+  <script src="{% static 'js/dropdown.js' %}" type='module'></script>
+  <script src="{% static 'js/sidebar.js' %}" type='module'></script>
+</body>
+
+</html>
