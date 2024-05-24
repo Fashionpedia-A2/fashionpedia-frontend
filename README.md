@@ -67,7 +67,21 @@ Tabel Context Diagram Redraw:
 ![alt text](<img/context redraw.jpg>)
 
 Discuss it and the write a well written an concise explanation why the risk storming technique is applied. Write it your Readme.md project repository. 
-Explanation storming technique, risk analysis, architecture modification justification: <insert here>
+Explanation storming technique, risk analysis, architecture modification justification: 
+
+RISK ANALYSIS
+
+The risk analysis was performed to identify critical areas of the application's performance. Using risk matrix and storming between member of the team, the identification attempt was made through 3 phases : identification, consensus, and mitigation. Through these phases, our team agrees, as part of the mitigation process, to add some modification to the architecture. The modification was to add load balancers and separating the database for each service. The justification for the decision was given below.
+
+ARCHITECTURE MODIFICATION JUSTIFICATION
+
+A. Addition of Load Balancers
+
+As an ecommerce web application, Fashionpedia may have large traffic in the future. The traffic it self may not evenly distributed between services. Some noticeabel services that may prone to large traffic included Authentication service, simply due to many user Authenticating and accessing resource, and order service to anticipate the large amount of order made by user and processed.
+
+B. Enabling one Database for Each Services
+
+In current implementation, all services connect to one database. This practice was prone to devops, for example if one wanted to change or perform update to the database. This was also, architecturally, wasnt modular. A better implementation was to separate the database for each service.
 
 Tabel Container Diagram Redraw:
 ![alt text](<img/container recreate.jpg>)
