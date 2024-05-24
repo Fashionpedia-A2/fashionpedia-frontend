@@ -77,7 +77,7 @@ Contributed by:
 
 - Rafi Ghani Harditama
 
-#### 4 - Buysell Service (Bagian Fitur Sell)
+#### 4 - Payment Service
 - Sefriano Edsel Jieftara Djie
 ![Alt text](img/code-sefri.png)
 
