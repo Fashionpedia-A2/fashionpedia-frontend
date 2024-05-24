@@ -1,4 +1,4 @@
-## FRONTEND FASHIONPEDIA
+# FRONTEND FASHIONPEDIA
 
 link deployment: [http://fashionpedia.my.id](http://fashionpedia.my.id)
 
@@ -11,52 +11,70 @@ Kelompok A2 :
 
 
 
-### Current Architecture
+## Current Architecture
 
-Context Diagram
+### Context Diagram
 ![alt text](img/context.jpg)
 
-Container Diagram
+### Container Diagram
 ![alt text](img/container.jpg)
 
-Deployment Diagram
+### Deployment Diagram
 ![alt text](img/deployment.jpg)
 
-Component Diagram
-- Rafi Ghani Harditama
-
-- Sefriano Edsel Jieftara Djie
-
+### Component Diagram
+Contributed by:
 - Nabil Muhammad Azzam
 
-[1 - Account Service (Auth + Profile) ]
+#### 1 - Account Service (Auth + Profile)
 
 ![image](https://github.com/Fashionpedia-A2/fashionpedia-frontend/assets/71275597/a97857a5-ba5b-4fbe-8128-64da1b95f1c6)
 
-[2 - Payment Service (Bagian approval oleh staff) ]
+#### 2 - Payment Service (Bagian approval oleh staff)
+Contributed by:
+- Nabil Muhammad Azzam
 
 ![image](https://github.com/Fashionpedia-A2/fashionpedia-frontend/assets/71275597/db57bcf9-0c48-49aa-94fd-50f077b9fa4a)
 
 
-- Ilham Abdillah Alhamdi
 
-- Fredo Melvern Tanzil
+#### 3 - Buysell Service (Bagian Fitur Buy)
+Contributed by:
+- Fredo Melvern Tanzil <br>
 ![alt text](<img/component fredo.jpg>)
 
 
-Code Diagram
-- Rafi Ghani Harditama
+#### 4 - Buysell Service (Bagian Fitur Sell)
+Contributed by:
+- Ilham Abdillah Alhamdi <br>
+![](./img/component-diagram-sell.png)
 
+- Rafi Ghani Harditama
 - Sefriano Edsel Jieftara Djie
 
+
+### Code Diagram
+
+#### 1 - Account Service (Auth + Profile)
+Contributed by:
 - Nabil Muhammad Azzam
 
 ![image](https://github.com/Fashionpedia-A2/fashionpedia-frontend/assets/71275597/b812cc00-25b6-46bb-9236-5074f89c066e)
 
-- Ilham Abdillah Alhamdi
 
+#### 2 - Buysell Service (Bagian Fitur Buy)
+Contributed by:
 - Fredo Melvern Tanzil
 ![alt text](<img/code fredo.jpg>)
+
+#### 3 - Buysell Service (Bagian Fitur Sell)
+Contributed by:
+- Ilham Abdillah Alhamdi
+![](./img/code-diagram-sell.png)
+
+
+- Rafi Ghani Harditama
+- Sefriano Edsel Jieftara Djie
 
 ### Risk Analyzing
 Tabel Risk Assesment:
