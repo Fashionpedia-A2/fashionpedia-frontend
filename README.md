@@ -36,22 +36,24 @@ Contributed by:
 
 ![image](https://github.com/Fashionpedia-A2/fashionpedia-frontend/assets/71275597/db57bcf9-0c48-49aa-94fd-50f077b9fa4a)
 
+#### 3 - Payment Service (Bagian Topup dan Payment)
+- Sefriano Edsel Jieftara Djie
+![Alt text](img/component-sefri.png)
 
-
-#### 3 - Buysell Service (Bagian Fitur Buy)
+#### 4 - Buysell Service (Bagian Fitur Buy)
 Contributed by:
 - Fredo Melvern Tanzil <br>
 ![alt text](<img/component fredo.jpg>)
 
 
-#### 4 - Buysell Service (Bagian Fitur Sell)
+#### 5 - Buysell Service (Bagian Fitur Sell)
 Contributed by:
 - Ilham Abdillah Alhamdi <br>
 ![](./img/component-diagram-sell.png)
 
-- Rafi Ghani Harditama
-- Sefriano Edsel Jieftara Djie
 
+
+- Rafi Ghani Harditama
 
 ### Code Diagram
 
@@ -74,7 +76,11 @@ Contributed by:
 
 
 - Rafi Ghani Harditama
+
+#### 4 - Buysell Service (Bagian Fitur Sell)
 - Sefriano Edsel Jieftara Djie
+![Alt text](img/code-sefri.png)
+
 
 ### Risk Analyzing
 Tabel Risk Assesment:
