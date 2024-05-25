@@ -25,11 +25,11 @@
       }
 
       .nav-page {
-        @apply h-8 w-8 flex justify-center items-center rounded-full hover:bg-gray-50
+        @apply h-8 w-8 flex justify-center items-center rounded-full hover:bg-gray-100 border
       }
 
-      .nav-page-selected {
-        @apply border bg-gray-200 hover:bg-gray-300
+      .selected {
+        @apply bg-black hover:!bg-gray-700 text-white
       }
 
       .dropdown-button {
@@ -37,7 +37,7 @@
       }
 
       .dropdown-item {
-        @apply w-full text-start text-gray-700 hover:bg-gray-100 hover:text-gray-900 block px-4 py-2 text-sm
+        @apply w-full text-start  hover:bg-gray-100 hover:text-gray-900 block px-4 py-2 text-sm
       }
 
       .dropdown-menu-container {
@@ -46,10 +46,6 @@
 
       .side-menu {
         @apply flex justify-center items-center p-2 rounded-2xl hover:bg-gray-100
-      }
-
-      .side-menu-selected {
-        @apply bg-gray-200 hover:bg-gray-300 
       }
 
       .side-expanded {
@@ -73,22 +69,27 @@
           <span class="side-menu-text font-semibold">Hide menu</span>
         </button>
       </div>
-      <a href="#" title="My Listing" class="side-menu side-menu-selected">
-        <i class="fa-solid fa-box mr-2 text-2xl text-gray-600"></i>
+      <a href="#" title="My Listing" class="side-menu selected">
+        <i class="fa-solid fa-box mr-2 text-2xl "></i>
         <span class="side-menu-text text-lg">My Listing</span>
       </a>
       <a href="#" title="Store Order" class="side-menu">
-        <i class="fa-solid fa-clipboard-list mr-2 text-2xl text-gray-600"></i>
+        <i class="fa-solid fa-clipboard-list mr-2 text-2xl "></i>
         <span class="side-menu-text text-lg">Store Order</span>
       </a>
     </nav>
     <section class="min-w-[800px] w-full bg-white rounded-3xl p-8 relative">
       <div class="flex flex-row justify-between">
         <h1 class="text-3xl font-semibold">Listings</h1>
-        <div class="flex gap-x-4">
-          <input type="text" name="search" id="search" placeholder="Search listing..."
-            class="bg-gray-100 rounded-lg px-4 py-2 placeholder-gray-600">
-          <a href="#" class="btn-secondary px-4 py-2">
+        <div class="flex gap-x-4 w-fit">
+          <div id="search-bar" class="flex bg-gray-100 pr-4 rounded-xl">
+            <button id="search-button" class="h-full bg-gray-300 aspect-square rounded-l-xl">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+            <input type="text" name="search" id="search-input" placeholder="Search listing..."
+              class="bg-gray-100 placeholder-gray-600 p-2 active:outline-none focus:outline-none">
+          </div>
+          <a href="#" class="btn-secondary flex justify-between items-center gap-x-2 px-4 py-2 w-[200px]">
             <i class="fa-solid fa-plus"></i>
             <span>Add New Listing</span>
           </a>
@@ -111,7 +112,7 @@
             </div>
             <div class="dropdown-menu-container hidden" role="menu" aria-orientation="vertical"
               aria-labelledby="dropdown-sort" tabindex="-1">
-              <div class="py-1" role="none">
+              <div class="py-1 text-gray-700" role="none">
                 <button class="dropdown-item sort-by-button" role="menuitem" data-sort="name-ASC">
                   <span>Nama (A-Z)</span>
                 </button>
@@ -199,7 +200,7 @@
         <span>Showing 1 to 10 of 20 results</span>
         <div class="flex gap-x-2">
           <a href="#" class="nav-page border"><i class="fa-solid fa-chevron-left"></i></a>
-          <a href="#" class="nav-page nav-page-selected">1</a>
+          <a href="#" class="nav-page selected">1</a>
           <a href="#" class="nav-page">2</a>
           <a href="#" class="nav-page">3</a>
           <a href="#" class="nav-page border"><i class="fa-solid fa-chevron-right"></i></a>
@@ -211,6 +212,7 @@
   <script src="{% static 'js/seller_listing.js' %}" type='module'></script>
   <script src="{% static 'js/dropdown.js' %}" type='module'></script>
   <script src="{% static 'js/sidebar.js' %}" type='module'></script>
+  <script src="{% static 'js/searchbar.js' %}" type='module'></script>
 </body>
 
 </html>

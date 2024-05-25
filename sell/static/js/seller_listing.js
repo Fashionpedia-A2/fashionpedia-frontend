@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
   statusButtons.forEach(button => {
     const status = button.getAttribute('data-status');
     if (status === urlStatus) {
-      button.classList.add('bg-gray-200', 'hover:bg-gray-300');
+      button.classList.add('selected');
     }
     button.addEventListener('click', function (e) {
       const url = new URL(window.location);
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
   sortButtons.forEach(button => {
     const sort = button.getAttribute('data-sort');
     if (sort === urlSort) {
-      button.classList.add('bg-gray-200', 'hover:bg-gray-300');
+      button.classList.add('selected');
       sortValueText.textContent = ' : '+button.textContent;
     }
     button.addEventListener('click', function (e) {
