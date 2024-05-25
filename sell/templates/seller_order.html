@@ -84,19 +84,13 @@
     {% include 'components/seller_sidebar.html' %}
     <section class="min-w-[800px] w-full bg-white rounded-3xl p-8 relative">
       <div class="flex flex-row justify-between">
-        <h1 class="text-3xl font-semibold">Listings</h1>
-        <div class="flex gap-x-4 w-fit">
-          <div id="search-bar" class="flex bg-gray-100 pr-4 rounded-xl">
-            <button id="search-button" class="h-full bg-gray-300 aspect-square rounded-l-xl">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-            <input type="text" name="search" id="search-input" placeholder="Search listing..."
-              class="bg-gray-100 placeholder-gray-600 p-2 active:outline-none focus:outline-none">
-          </div>
-          <a href="#" class="btn-secondary flex justify-between items-center gap-x-2 px-4 py-2 w-[200px]">
-            <i class="fa-solid fa-plus"></i>
-            <span>Add New Listing</span>
-          </a>
+        <h1 class="text-3xl font-semibold">Orders</h1>
+        <div id="search-bar" class="flex bg-gray-100 pr-4 rounded-xl overflow-clip">
+          <button id="search-button" class="h-full bg-gray-300 aspect-square rounded-l-xl">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+          <input type="text" name="search" id="search-input" placeholder="Search order by id..."
+            class="bg-gray-100 placeholder-gray-600 p-2 active:outline-none focus:outline-none">
         </div>
       </div>
       <div class="flex justify-between mt-4">
