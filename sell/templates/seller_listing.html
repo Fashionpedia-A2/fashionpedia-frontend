@@ -24,7 +24,7 @@
         @apply py-2 px-4 text-start
       }
 
-      .nav-page {
+      .nav-paging {
         @apply h-8 w-8 flex justify-center items-center rounded-full hover:bg-gray-100 border
       }
 
@@ -44,14 +44,6 @@
         @apply absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none
       }
 
-      .side-menu {
-        @apply flex justify-center items-center p-2 rounded-2xl hover:bg-gray-100
-      }
-
-      .side-expanded {
-        @apply min-w-[200px]
-      }
-
       .filter-status-button {
         @apply py-1 px-4 rounded-xl hover:bg-gray-100
       }
@@ -61,23 +53,7 @@
 
 <body class="bg-gray-100">
   <main class="w-full min-h-screen flex flex-row px-4 py-8 2xl:container mx-auto gap-4">
-    <nav id="navbar" class="side-expanded bg-white rounded-3xl flex flex-col gap-y-4 px-2 py-8">
-      <div class="border-b">
-        <button id="sidebar-toggle-button" aria-expanded="true" title="Toggle Menu"
-          class="w-full p-2 text-gray-500 hover:text-gray-950">
-          <i id="sidebar-toggle-icon" class="fa-solid fa-chevron-left mr-2"></i>
-          <span class="side-menu-text font-semibold">Hide menu</span>
-        </button>
-      </div>
-      <a href="#" title="My Listing" class="side-menu selected">
-        <i class="fa-solid fa-box mr-2 text-2xl "></i>
-        <span class="side-menu-text text-lg">My Listing</span>
-      </a>
-      <a href="#" title="Store Order" class="side-menu">
-        <i class="fa-solid fa-clipboard-list mr-2 text-2xl "></i>
-        <span class="side-menu-text text-lg">Store Order</span>
-      </a>
-    </nav>
+    {% include 'components/seller_sidebar.html' %}
     <section class="min-w-[800px] w-full bg-white rounded-3xl p-8 relative">
       <div class="flex flex-row justify-between">
         <h1 class="text-3xl font-semibold">Listings</h1>
@@ -199,11 +175,11 @@
         class="absolute bottom-0 left-0 bg-white w-full h-16 flex items-center justify-between px-4 rounded-3xl shadow-2xl ring-1 ring-black ring-opacity-10">
         <span>Showing 1 to 10 of 20 results</span>
         <div class="flex gap-x-2">
-          <a href="#" class="nav-page border"><i class="fa-solid fa-chevron-left"></i></a>
-          <a href="#" class="nav-page selected">1</a>
-          <a href="#" class="nav-page">2</a>
-          <a href="#" class="nav-page">3</a>
-          <a href="#" class="nav-page border"><i class="fa-solid fa-chevron-right"></i></a>
+          <a href="#" class="nav-paging border"><i class="fa-solid fa-chevron-left"></i></a>
+          <a href="#" class="nav-paging selected">1</a>
+          <a href="#" class="nav-paging">2</a>
+          <a href="#" class="nav-paging">3</a>
+          <a href="#" class="nav-paging border"><i class="fa-solid fa-chevron-right"></i></a>
         </div>
       </div>
     </section>
@@ -211,7 +187,6 @@
   <script src="https://kit.fontawesome.com/154556051d.js" crossorigin="anonymous"></script>
   <script src="{% static 'js/seller_listing.js' %}" type='module'></script>
   <script src="{% static 'js/dropdown.js' %}" type='module'></script>
-  <script src="{% static 'js/sidebar.js' %}" type='module'></script>
   <script src="{% static 'js/searchbar.js' %}" type='module'></script>
 </body>
 
