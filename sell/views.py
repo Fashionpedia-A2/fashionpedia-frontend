@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
 
+def index(request):
+    return redirect('get_seller_listing')
 
 def create_listing(request):
     return render(request, 'form_listing.html')
