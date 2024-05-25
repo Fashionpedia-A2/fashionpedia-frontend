@@ -129,3 +129,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Static root for collectstatic
 STATIC_ROOT = 'static/'
+
+
+
+# typically, os.path.join(os.path.dirname(__file__), 'media')
+MEDIA_ROOT =  BASE_DIR / 'media'
+MEDIA_URL = '/media/'
