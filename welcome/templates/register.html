@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Login</title>
+    <title>Register</title>
     <style>
         body, html {
             height: 100%;
@@ -67,10 +67,17 @@
         }
 
         .register-link {
-        font-size: 14px;
-        color: #080808;
-        text-decoration: underline; }
+            font-size: 14px;
+            color: #080808;
+            text-decoration: underline;
+        }
+
+        .alert {
+            display: none;
+            margin-top: 20px;
+        }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 <main>
@@ -78,32 +85,71 @@
         <div class="col-sm-6 col-md-5 form-section">
             <div class="login-wrapper">
                 <h2 class="login-title">Register</h2>
-                <form action="http://google.com" method="post">
+                <form id="registerForm">
                     <div class="form-group">
                         <label for="email" class="sr-only">Email</label>
-                        <input type="email" name="email" id="email" class="form-control" placeholder="Email">
+                        <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="userName" class="sr-only">Username</label>
+                        <input type="text" name="userName" id="userName" class="form-control" placeholder="Username" required>
                     </div>
                     <div class="form-group mb-3">
                         <label for="password" class="sr-only">Password</label>
-                        <input type="password" name="password" id="password" class="form-control" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                        <label for="userName" class="sr-only">Email</label>
-                        <input type="userName" name="userName" id="userName" class="form-control" placeholder="Username">
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="phoneNumber" class="sr-only">Phone Number</label>
-                        <input type="phoneNumber" name="phoneNumber" id="phoneNumber" class="form-control" placeholder="Password">
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
                     </div>
                     <div class="d-flex justify-content-between align-items-center mb-5">
-                        <input name="login" id="login" class="btn login-btn" type="button" value="Register">
+                        <input name="register" id="register" class="btn login-btn" type="button" value="Register">
                     </div>
                 </form>
                 <p class="login-wrapper-footer-text">Already had an account? <a href="{% url 'login' %}" class="text-reset">Login</a></p>
+                <div class="alert alert-danger" role="alert" id="registerError">
+                    semua data perlu diisi
+                </div>
             </div>
         </div>
     </div>
 </main>
 
+<script>
+    $(document).ready(function () {
+        $('#register').click(function () {
+            var email = $('#email').val();
+            var password = $('#password').val();
+            var userName = $('#userName').val();
+            var phoneNumber = $('#phoneNumber').val();
+
+            if (!email || !password || !userName) {
+                $('#registerError').text('semua data perlu diisi').show();
+                return;
+            }
+
+            $.ajax({
+                url: 'http://account.fashionpedia.my.id/auth/register',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    email: email,
+                    password: password,
+                    role: 'USER',
+                    userName: userName
+                }),
+                success: function (response, textStatus, xhr) {
+                    if (xhr.status === 200) { 
+                        window.location.href = "{% url 'login' %}";  
+                    }
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.log('Error:', textStatus); 
+                    console.log('XHR:', xhr); 
+                    $('#registerError').text('Registration failed').show();
+                }
+            });
+        });
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
