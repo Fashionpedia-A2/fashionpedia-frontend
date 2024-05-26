@@ -128,7 +128,10 @@
                 success: function (response, textStatus, xhr) {
                     console.log('Response:', response); 
                     if (xhr.status === 200) {
-                        window.location.href = 'https://scele.cs.ui.ac.id'; 
+                        let token = response.token;
+                        console.log('Token:', token);
+                        localStorage.setItem('token', token);
+                        window.location.href = '/buy';
                     }
                 },
                 error: function (xhr, textStatus, errorThrown) {
