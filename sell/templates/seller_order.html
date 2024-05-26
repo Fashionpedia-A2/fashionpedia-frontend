@@ -114,7 +114,7 @@
               <button class="dropdown-item sort-by-button" role="menuitem" data-sort="updatedAt-DESC">
                 <span>Newest</span>
               </button>
-              <button class="dropdown-item sort-by-button" role="menuitem" data-sort="name-DESC">
+              <button class="dropdown-item sort-by-button" role="menuitem" data-sort="updatedAt-ASC">
                 <span>Oldest</span>
               </button>
             </div>
@@ -122,80 +122,9 @@
         </div>
       </div>
 
-      <div class="order-wrapper my-8">
-        <div class="flex flex-col border rounded-2xl">
-          <div class="flex justify-between border-b p-4">
-            <div class="flex divide-x">
-              <div class="px-4 font-semibold">ID: 1</div>
-              <div class="px-4" title="Created At">
-                <i class="fa-regular fa-calendar-plus"></i>
-                <span>Sep 12, 2024; 13:14</span>
-              </div>
-              <div class="px-4" title="Updated At">
-                <i class="fa-solid fa-pen-to-square"></i>
-                <span>Sep 14, 2024; 17:30</span>
-              </div>
-            </div>
-            <span class="status-chip status-chip-diproses">Diproses</span>
-          </div>
-
-          <div class="flex border-b divide-x">
-
-            <div class="w-[35%] flex flex-col p-4 flex-none">
-              <span class="font-semibold text-lg mb-4">Buyer Detail</span>
-              <div class="flex flex-col">
-                <span class="font-semibold">Ilham Abdillah Alhamdi</span>
-                <span>085157550686</span>
-                <span class="font-semibold mt-4">Address</span>
-                <p>
-                  Jl Jend Sudirman Kav 3-4 Wisma Kyoei Prince, Dki Jakarta
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                </p>
-              </div>
-            </div>
-
-            <div class="w-[65%%] flex flex-col p-4 gap-y-4 overflow-hidden">
-              <span class="font-semibold text-lg">Listing Detail</span>
-              <div class="listing-card flex justify-start gap-x-4 w-full">
-                <div class="flex w-full">
-                  <img
-                    src="https://images.tokopedia.net/img/cache/700/VqbcmM/2020/9/28/b5fbee90-9616-4e93-a8b1-1971b884ca5f.jpg"
-                    class="h-16 w-16">
-                  <div class="flex flex-col w-full overflow-hidden">
-                    <a href="#" class="text-lg font-semibold text-nowrap text-ellipsis overflow-hidden"
-                      title="Celana Denim Pria Lorem ipsum dolor sit amet consectetur adipisicing elit.">Celana Denim
-                      Pria
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.</a>
-
-                    <div class="flex gap-x-2">
-                      <span>3</span>
-                      <span>x</span>
-                      <span>Rp200.000</span>
-                    </div>
-                    <div>
-                      <span>Subtotal : </span>
-                      <span class="font-semibold">Rp600.000</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <button id="more-item-button" class="w-fit px-2 py-1 text-sm text-gray-700  place-self-end">
-                <span class="mr-2">See 2 other items</span>
-                <i class="fa-solid fa-chevron-down"></i>
-              </button>
-
-            </div>
-          </div>
-
-          <div class="p-4 text-lg flex justify-between">
-            <span class="font-semibold">Total Price: </span>
-            <span class="font-bold">Rp1.800.000</span>
-          </div>
-        </div>
-
+      <div id="order-container" class="my-8">
+        
       </div>
-
       <div
         class="absolute bottom-0 left-0 bg-white w-full h-16 flex items-center justify-between px-4 rounded-3xl shadow-2xl ring-1 ring-black ring-opacity-10">
         <span>Showing 1 to 10 of 20 results</span>

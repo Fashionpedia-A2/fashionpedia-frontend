@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+
 // Fetch Data
 const fetchListings = async () => {
   const url = new URL(`${API_URL}/seller/listing`);
