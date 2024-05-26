@@ -131,6 +131,7 @@
                         let token = response.token;
                         console.log('Token:', token);
                         localStorage.setItem('token', token);
+                        localStorage.setItem('email', email);
                         window.location.href = '/buy';
                     }
                 },
