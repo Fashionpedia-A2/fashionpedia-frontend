@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'welcome',
+    'profiles',
     'staff_dashboard',
     'sell',
     'buy',
@@ -57,6 +58,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django_prometheus.middleware.PrometheusAfterMiddleware',
+
 ]
 
 ROOT_URLCONF = 'fashionpedia_frontend.urls'
