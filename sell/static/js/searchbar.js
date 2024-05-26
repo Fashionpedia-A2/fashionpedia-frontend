@@ -1,9 +1,12 @@
 const onSearch = () => {
   const searchInput = document.getElementById('search-input');
   const searchQuery = searchInput.value.trim();
-  if (!searchQuery) return
   const url = new URL(window.location);
-  url.searchParams.set('q', searchQuery);
+  if (searchQuery) {
+    url.searchParams.set('q', searchQuery);
+  } else {
+    url.searchParams.delete('q');
+  }
   window.location.href = url.href;
 };
 

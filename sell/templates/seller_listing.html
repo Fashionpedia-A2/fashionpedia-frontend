@@ -47,6 +47,17 @@
       .filter-status-button {
         @apply py-1 px-4 rounded-xl hover:bg-gray-100
       }
+
+      .chip {
+        @apply inline-block px-2 py-1 rounded-full text-center
+      }
+
+      .chip-status-active {
+        @apply chip bg-green-200 text-green-800
+      }
+      .chip-status-inactive {
+        @apply chip bg-yellow-200 text-yellow-800
+      }
     }
   </style>
 </head>
@@ -123,52 +134,8 @@
             <th class="w-[12%]">Actions</th>
           </tr>
         </thead>
-        <tbody>
-          <tr class="border-y">
-            <td>1</td>
-            <td class="flex">
-              <a href="#" class="">
-                <img
-                  src="https://images.tokopedia.net/img/cache/700/VqbcmM/2020/9/28/b5fbee90-9616-4e93-a8b1-1971b884ca5f.jpg"
-                  class="h-16 w-16">
-              </a>
-              <div class="flex flex-col w-full overflow-hidden">
-                <a href="#" class="text-lg font-semibold text-nowrap text-ellipsis overflow-hidden"
-                  title="Celana Denim Pria Lorem ipsum dolor sit amet consectetur adipisicing elit.">Celana Denim Pria
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.</a>
-                <span>33 EU</span>
-              </div>
-            </td>
-            <td>Rp300.000</td>
-            <td>10</td>
-            <td>
-              <span class="block bg-green-200 text-green-800 rounded-full text-center py-1">Active</span>
-            </td>
-            <td>
-              <div class="relative inline-block text-left">
-                <div>
-                  <button type="button" class="dropdown-button" id="dropdown-manage-listing-1" aria-expanded="false"
-                    aria-haspopup="true">
-                    Manage
-                    <i class="fa-solid fa-chevron-down text-gray-500"></i>
-                  </button>
-                </div>
-                <div class="dropdown-menu-container hidden" role="menu" aria-orientation="vertical"
-                  aria-labelledby="dropdown-manage-listing-1" tabindex="-1">
-                  <div class="py-1" role="none">
-                    <a href="#" class="dropdown-item" role="menuitem" tabindex="-1">
-                      <i class="fa-solid fa-pen-to-square mr-4"></i>
-                      <span>Edit</span>
-                    </a>
-                    <a href="#" class="dropdown-item" role="menuitem" tabindex="-1">
-                      <i class="fa-solid fa-trash mr-4"></i>
-                      <span>Delete</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </td>
-          </tr>
+        <tbody id="listing-container">
+          
         </tbody>
       </table>
       <div
@@ -186,7 +153,6 @@
   </main>
   <script src="https://kit.fontawesome.com/154556051d.js" crossorigin="anonymous"></script>
   <script src="{% static 'js/seller_listing.js' %}" type='module'></script>
-  <script src="{% static 'js/dropdown.js' %}" type='module'></script>
   <script src="{% static 'js/searchbar.js' %}" type='module'></script>
 </body>
 

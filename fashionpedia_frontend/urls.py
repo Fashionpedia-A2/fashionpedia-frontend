@@ -24,5 +24,5 @@ urlpatterns = [
     path('welcome/', include('welcome.urls')),
     path('sell/', include('sell.urls')),
     path('buy/', include('buy.urls')),
-
+    path('prometheus/', include('django_prometheus.urls')),
 ]
