@@ -21,7 +21,8 @@ from fashionpedia_frontend import views
 urlpatterns = [
     path('', views.welcome),
     path('admin/', admin.site.urls),
-    path('buy/', include('buy.urls')),
     path('welcome/', include('welcome.urls')),
-    
+    path('sell/', include('sell.urls')),
+    path('buy/', include('buy.urls')),
+
 ]
