@@ -1,0 +1,217 @@
+{% extends "main.html" %}
+{% load static %}
+
+
+{% block content %}
+    
+<div class="product-container">
+    <div class="product-image">
+      <img id="img" alt="Product name">
+    </div>
+    <div class="product-details">
+      <h3 id="listing-name">Product name</h3>
+      <p class="price" id="price">Price: $123.45</p>
+      <p class="price" id="stock">Price: $123.45</p>
+      <p class="price" id="size">Price: $123.45</p>
+      <p class="price" id="condition">Price: $123.45</p>
+      <p class="price" id="category">Price: $123.45</p>
+      <p id="description">Description of the product, including size, material, and care instructions.</p>
+
+      <!-- Seller Information-->
+      <div class="container">
+        <img id="seller_img" alt="Celana" class="circle-image">
+        <span id="seller_name" class="name">Nama seller</span>
+      </div>
+
+
+      <form action="/add-to-cart" method="post">
+        <div class="quantity-container">
+          <button type="button" class="decrease-btn">-</button>
+          <input type="number" id="quantity-input" name="quantity" value="0" min="0">
+          <button type="button" class="increase-btn">+</button>
+        </div>
+        <button type="submit">Add to cart</button>
+      </form>
+
+    </div>
+  </div>
+
+  <script>
+
+  $(document).ready(function() {
+    var url = "http://api.fashionpedia.my.id/api/v1/buyer/listing";
+  
+    // Send a POST request
+    $.ajax({
+      url: url,
+      type: "GET",
+      success: function(data){
+        var the_data = null
+        for (var i = 0; i < data.length; i++){
+          var d = data[i]
+          var id = "{{ id }}";
+          if (d.id == id ){
+            the_data = d
+            break
+          }
+        }
+        if (the_data == null) {
+          console.error('Error: Listing not found');
+          return
+        }
+        console.log(the_data)
+        $('#img').attr('src', the_data.imageUrl);
+        $('#stock').html("Stock: " + the_data.stock);
+        $('#size').html("Size: " + the_data.size);
+        $('#listing-name').html(the_data.name);
+        $('#price').html("Price: " + the_data.price);
+        $('#condition').html("Condition: " + the_data.condition);
+        $('#description').html("Description: " + the_data.description);
+        $('#category').html("Category: " + the_data.category);
+        $('#seller_img').attr('src', 'https://ui-avatars.com/api/?name=' + d.sellerDetailsDto.name.replace(/\s/g, '+'));
+        $('#seller_name').html(the_data.sellerDetailsDto.name);
+      },
+      error: function(error){
+        console.error('Error:', error);
+      }
+    });
+  });
+
+  // Quantity decrease / increase
+  const decreaseBtn = document.querySelector('.decrease-btn');
+  const increaseBtn = document.querySelector('.increase-btn');
+  const quantityInput = document.getElementById('quantity-input');
+
+  decreaseBtn.addEventListener('click', () => {
+    let quantity = parseInt(quantityInput.value);
+    if (quantity > 0) {
+      quantityInput.value = quantity - 1;
+    }
+  });
+
+  increaseBtn.addEventListener('click', () => {
+    quantityInput.value = parseInt(quantityInput.value) + 1;
+  });
+  
+  </script>
+  <style>
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.product-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 50px auto;
+  width: 80%;
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.product-image {
+  width: 20%;
+  padding: 10px;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Ensures image fills container */
+}
+
+.product-details {
+  width: 50%;
+  padding: 10px;
+}
+
+h3 {
+  margin-top: 0;
+  font-size: 24px;
+}
+
+.price {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+p {
+  line-height: 1.5;
+}
+
+select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #444;
+}
+
+  </style>
+
+<style>
+  .quantity-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd; /* Add a light border around the container */
+    border-radius: 5px; /* Rounded corners for a smoother look */
+    padding: 5px; /* Add some space between buttons and input */
+  }
+
+  .decrease-btn,
+  .increase-btn {
+    background-color: #f0f0f0; /* Light gray background */
+    color: #333; /* Darker text for better contrast */
+    border: none; /* Remove default border for cleaner look */
+    padding: 7px 12px; /* Adjust padding for a bit more space */
+    cursor: pointer; /* Make buttons look clickable */
+    font-size: 16px; /* Increase font size for better readability */
+    transition: background-color 0.2s ease-in-out; /* Add smooth hover effect */
+  }
+
+  .decrease-btn:hover,
+  .increase-btn:hover {
+    background-color: #e0e0e0; /* Slightly darken background on hover */
+  }
+
+  #quantity-input {
+    width: 30px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px; /* Match border radius of container */
+    padding: 5px; /* Match padding for consistency */
+  }
+  .container {
+  display: flex; /* Arrange elements horizontally */
+  align-items: center; /* Vertically align image and text */
+}
+
+.circle-image {
+  width: 100px; /* Adjust image width as needed */
+  height: 100px; /* Adjust image height as needed */
+  border-radius: 50%; /* Make the image a circle */
+  object-fit: cover; /* Crop image to fit within container */
+}
+
+.name {
+  margin-left: 10px; /* Add space between image and text */
+  font-size: 16px; /* Adjust font size as needed */
+}
+</style>
+  
+{% endblock %}
