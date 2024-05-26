@@ -14,20 +14,12 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path, include
-from fashionpedia_frontend import views
-from django.conf import settings
-from django.conf.urls.static import static
+from django.urls import path
+from . import views
 
 urlpatterns = [
-    path('', views.welcome),
-    path('admin/', admin.site.urls),
-    path('welcome/', include('welcome.urls')),
-    path('profile/', include('profiles.urls')),
-    path('sell/', include('sell.urls')),
-    path('buy/', include('buy.urls')),
-    path('prometheus/', include('django_prometheus.urls')),
-    path('report/', include('report.urls')),
-    path('staff-dashboard/', include('staff_dashboard.urls')),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path('payment/', views.payment, name='payment'),
+    path('topup/', views.topup, name='topup'),
+    path('user-report/', views.user_report, name='user-report'),
+    path('product-report/', views.product_report, name='product-report'),
+]
