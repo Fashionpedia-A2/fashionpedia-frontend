@@ -42,7 +42,7 @@
 
     
     // Get all listing details
-    var url = "http://api.fashionpedia.my.id/api/v1/buyer/listing";
+    var url = "http://localhost:8080/buyer/listing";
   
     // Send a POST request
     $.ajax({
@@ -83,7 +83,7 @@
     $('#add-to-cart').submit(function(e) {
       e.preventDefault();
 
-      var url = "http://api.fashionpedia.my.id/api/v1/buyer/cart/update";
+      var url = "http://localhost:8080/buyer/cart/update";
       var listing_id = "{{ id }}";
       var quantity = $('#quantity-input').val();
 

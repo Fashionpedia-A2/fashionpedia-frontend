@@ -22,7 +22,7 @@
                     <th class="text-center align-middle py-3 px-0" style="width: 40px;"><a href="#" class="shop-tooltip float-none text-light" title="" data-original-title="Clear cart"><i class="ino ion-md-trash"></i></a></th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody id="cart-table">
         
                   <tr>
                     <td class="p-4">
@@ -114,6 +114,58 @@
           </div>
       </div>
   </div>
+  {% endblock %}
+
+  
+
+  {% block js %}
+  <script>
+
+    $(document).ready(function() {
+        var token = localStorage.getItem('token');
+        $.ajax({
+            url: 'http://localhost:8080/buyer/cart',
+            type: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + token
+            },
+            success: function(data) {
+                console.log(data);
+                var string = "";
+                for (dat in data){
+                  d = data[dat];
+                  string += `
+                    <tr>
+                        <td class="p-4">
+                          <div class="media align-items-center">
+                            <img src="${d.imageUrl}" class="d-block ui-w-40 ui-bordered mr-4" alt="">
+                            <div class="media-body">
+                              <a href="#" class="d-block text-dark">Product 1</a>
+                              <small>
+                                <span class="text-muted">Color:</span>
+                                <span class="text-muted">Size: </span> EU 37 &nbsp;
+                                <span class="text-muted">Ships from: </span> China
+                              </small>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="text-right font-weight-semibold align-middle p-4">$57.55</td>
+                        <td class="align-middle p-4"><input type="text" class="form-control text-center" value="2"></td>
+                        <td class="text-right font-weight-semibold align-middle p-4">$115.1</td>
+                        <td class="text-center align-middle px-0"><a href="#" class="shop-tooltip close float-none text-danger" title="" data-original-title="Remove">×</a></td>
+                      </tr>
+                    `;
+                }
+                $('#cart-table').html(string);
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+    });
+
+  </script>
+  
   {% endblock %}
   
   {% block css %}
