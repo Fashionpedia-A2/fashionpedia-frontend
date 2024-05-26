@@ -25,8 +25,8 @@
                   style="z-index: 1;">Edit profile</button>
               </div>
               <div class="ms-3" style="margin-top: 130px;">
-                <h5 id="userName">Intan Fadilla</h5>
-                <p id="userLocation">Depok</p>
+                <h5 id="userName"></h5>
+                <p id="userLocation"></p>
               </div>
             </div>
             <div class="p-4 text-black bg-body-tertiary">
@@ -43,9 +43,9 @@
                 <p class="lead fw-normal mb-0">Contact Information</p>
               </div>
               <div>
-                <p>Email: <span id="email">nasywa.kamila@ui.ac.id</span></p>
-                <p>Phone Number: <span id="phoneNumber">081387443713</span></p>
-                <p>Address: <span id="address">Jl. Gunung Pangrango</span></p>
+                <p>Email: <span id="email"></span></p>
+                <p>Phone Number: <span id="phoneNumber"></span></p>
+                <p>Address: <span id="address"></span></p>
               </div>
             </div>
           </div>
@@ -88,7 +88,7 @@
 
   <script>
     function fetchProfileData() {
-      var email = "nasywa.kamila@ui.ac.id";
+      var email = localStorage.getItem('email');
       $.ajax({
         url: 'http://account.fashionpedia.my.id/auth/profile',
         type: 'POST',
