@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'welcome',
+    'profiles',
+    'sell',
     'buy',
     'profiles',
     'staff_dashboard',
