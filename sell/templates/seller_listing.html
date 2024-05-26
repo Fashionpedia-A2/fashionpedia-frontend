@@ -1,0 +1,159 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fashionpedia | Manage Your Listings</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style type="text/tailwindcss">
+    @layer components {
+      * {
+        @apply box-border;
+      }
+      .btn-primary {
+        @apply bg-black hover:bg-gray-800 text-white rounded-lg cursor-pointer;
+      }
+
+      .btn-secondary {
+        @apply bg-white hover:bg-gray-50 border border-black rounded-lg text-black cursor-pointer ;
+      }
+      tbody td, thead th {
+        @apply py-2 px-4 text-start
+      }
+
+      .nav-paging {
+        @apply h-8 w-8 flex justify-center items-center rounded-full hover:bg-gray-100 border
+      }
+
+      .selected {
+        @apply bg-black hover:!bg-gray-700 text-white
+      }
+
+      .dropdown-button {
+        @apply flex w-full justify-center items-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50
+      }
+
+      .dropdown-item {
+        @apply w-full text-start  hover:bg-gray-100 hover:text-gray-900 block px-4 py-2 text-sm
+      }
+
+      .dropdown-menu-container {
+        @apply absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none
+      }
+
+      .filter-status-button {
+        @apply py-1 px-4 rounded-xl hover:bg-gray-100
+      }
+
+      .chip {
+        @apply inline-block px-2 py-1 rounded-full text-center
+      }
+
+      .chip-status-active {
+        @apply chip bg-green-200 text-green-800
+      }
+      .chip-status-inactive {
+        @apply chip bg-yellow-200 text-yellow-800
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100">
+  <main class="w-full min-h-screen flex flex-row px-4 py-8 2xl:container mx-auto gap-4">
+    {% include 'components/seller_sidebar.html' %}
+    <section class="min-w-[800px] w-full bg-white rounded-3xl p-8 relative">
+      <div class="flex flex-row justify-between">
+        <h1 class="text-3xl font-semibold">Listings</h1>
+        <div class="flex gap-x-4 w-fit">
+          <div id="search-bar" class="flex bg-gray-100 pr-4 rounded-xl">
+            <button id="search-button" class="h-full bg-gray-300 aspect-square rounded-l-xl">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+            <input type="text" name="search" id="search-input" placeholder="Search listing..."
+              class="bg-gray-100 placeholder-gray-600 p-2 active:outline-none focus:outline-none">
+          </div>
+          <a href="#" class="btn-secondary flex justify-between items-center gap-x-2 px-4 py-2 w-[200px]">
+            <i class="fa-solid fa-plus"></i>
+            <span>Add New Listing</span>
+          </a>
+        </div>
+      </div>
+      <div class="flex justify-between mt-4">
+        <div class="flex gap-x-2">
+          <button data-status="all" class="filter-status-button">All</button>
+          <button data-status="active" class="filter-status-button">Active</button>
+          <button data-status="inactive" class="filter-status-button">Inactive</button>
+        </div>
+        <div>
+          <div class="relative inline-block text-left">
+            <div>
+              <button type="button" class="dropdown-button" id="dropdown-sort" aria-expanded="false"
+                aria-haspopup="true">
+                Sort By <span id="sort-value"></span>
+                <i class="fa-solid fa-chevron-down text-gray-500"></i>
+              </button>
+            </div>
+            <div class="dropdown-menu-container hidden" role="menu" aria-orientation="vertical"
+              aria-labelledby="dropdown-sort" tabindex="-1">
+              <div class="py-1 text-gray-700" role="none">
+                <button class="dropdown-item sort-by-button" role="menuitem" data-sort="name-ASC">
+                  <span>Nama (A-Z)</span>
+                </button>
+                <button class="dropdown-item sort-by-button" role="menuitem" data-sort="name-DESC">
+                  <span>Nama (Z-A)</span>
+                </button>
+                <button class="dropdown-item sort-by-button" role="menuitem" data-sort="price-DESC">
+                  <span>Harga Tertinggi</span>
+                </button>
+                <button class="dropdown-item sort-by-button" role="menuitem" data-sort="price-ASC">
+                  <span>Harga Terendah</span>
+                </button>
+                <button class="dropdown-item sort-by-button" role="menuitem" data-sort="stock-DESC">
+                  <span>Stok Terbanyak</span>
+                </button>
+                <button class="dropdown-item sort-by-button" role="menuitem" data-sort="stock-ASC">
+                  <span>Stok Tersedikit</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <table class="w-full my-8 table-fixed">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="w-[5%]">ID</th>
+            <th class="w-[45%]">Listing</th>
+            <th class="w-[14%]">Price</th>
+            <th class="w-[14%]">Stock</th>
+            <th class="w-[10%]">Status</th>
+            <th class="w-[12%]">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="listing-container">
+          
+        </tbody>
+      </table>
+      <div
+        class="absolute bottom-0 left-0 bg-white w-full h-16 flex items-center justify-between px-4 rounded-3xl shadow-2xl ring-1 ring-black ring-opacity-10">
+        <span>Showing 1 to 10 of 20 results</span>
+        <div class="flex gap-x-2">
+          <a href="#" class="nav-paging border"><i class="fa-solid fa-chevron-left"></i></a>
+          <a href="#" class="nav-paging selected">1</a>
+          <a href="#" class="nav-paging">2</a>
+          <a href="#" class="nav-paging">3</a>
+          <a href="#" class="nav-paging border"><i class="fa-solid fa-chevron-right"></i></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="https://kit.fontawesome.com/154556051d.js" crossorigin="anonymous"></script>
+  <script src="{% static 'js/seller_listing.js' %}" type='module'></script>
+  <script src="{% static 'js/searchbar.js' %}" type='module'></script>
+</body>
+
+</html>
