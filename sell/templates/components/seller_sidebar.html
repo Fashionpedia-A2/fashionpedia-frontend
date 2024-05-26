@@ -1,0 +1,37 @@
+{% load static %}
+<style type="text/tailwindcss">
+  @layer components {
+
+    .selected {
+      @apply bg-black hover:!bg-gray-700 text-white
+    }
+
+    .side-menu {
+      @apply flex justify-center items-center p-2 rounded-2xl hover:bg-gray-100
+    }
+
+    .side-expanded {
+      @apply min-w-[200px]
+    }
+  }
+</style>
+
+<nav id="navbar" class="side-expanded bg-white rounded-3xl flex flex-col gap-y-4 px-2 py-8">
+  <div class="border-b">
+    <button id="sidebar-toggle-button" aria-expanded="true" title="Toggle Menu"
+      class="w-full p-2 text-gray-500 hover:text-gray-950">
+      <i id="sidebar-toggle-icon" class="fa-solid fa-chevron-left mr-2"></i>
+      <span class="side-menu-text font-semibold">Hide menu</span>
+    </button>
+  </div>
+  <a href="/sell/my-listing/" title="My Listing" class="side-menu">
+    <i class="fa-solid fa-box mr-2 text-2xl "></i>
+    <span class="side-menu-text text-lg">My Listing</span>
+  </a>
+  <a href="/sell/order/" title="Store Order" class="side-menu">
+    <i class="fa-solid fa-clipboard-list mr-2 text-2xl "></i>
+    <span class="side-menu-text text-lg">Store Order</span>
+  </a>
+</nav>
+
+<script src="{% static 'js/sidebar.js' %}" type='module'></script>

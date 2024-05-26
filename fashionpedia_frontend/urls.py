@@ -24,5 +24,8 @@ urlpatterns = [
     path('', views.welcome),
     path('admin/', admin.site.urls),
     path('welcome/', include('welcome.urls')),
+    path('sell/', include('sell.urls')),
+    path('buy/', include('buy.urls')),
+    path('prometheus/', include('django_prometheus.urls')),
     path('staff-dashboard/', include('staff_dashboard.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

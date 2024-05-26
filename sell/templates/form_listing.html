@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style type="text/tailwindcss">
+    @layer components {
+      .input {
+        @apply w-full p-4 border border-gray-400 rounded-lg text-base;
+      }
+
+      .input-wrapper {
+        @apply w-full p-4 my-4 flex flex-row justify-between;
+      }
+
+      .input-label {
+        @apply text-lg font-semibold w-1/5 flex items-center;
+      }
+
+      .btn-primary {
+        @apply bg-black hover:bg-gray-800 text-white rounded-lg cursor-pointer;
+      }
+
+      .btn-secondary {
+        @apply bg-white hover:bg-gray-50 border border-black rounded-lg text-black cursor-pointer ;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="w-full h-8"></header>
+  <main class="container max-w-screen-lg mx-auto">
+    <h1 class="text-4xl font-semibold">Add New Listing</h1>
+    <form action="" method="POST" class="my-8">
+      <div id="name-section" class="input-wrapper">
+        <label for="name" class="input-label">Item Name</label>
+        <input type="text" name="name" id="name-input" placeholder="e.g. Blue Crew Neck T-Shirt" class="input">
+      </div>
+      <div id="category-section" class="input-wrapper">
+        <label for="category" class="input-label">Category</label>
+        <input type="text" name="category" id="category-input" class="input" placeholder="Choose a category">
+      </div>
+      <div id="condition-section" class="input-wrapper">
+        <label for="condition-input" class="input-label">Condition</label>
+        <select name="condition" id="condition-input" class="input">
+          <option value="NOT_SPECIFIED">Not Specified</option>
+          <option value="NEW">New</option>
+          <option value="VERY_GOOD">Very Good</option>
+          <option value="GOOD">Good</option>
+          <option value="SATISFACTORY">Satisfactory</option>
+        </select>
+      </div>
+      <div id="size-section" class="input-wrapper">
+        <label for="size-input" class="input-label">Size</label>
+        <input type="text" name="size" id="size-input" placeholder="Add your listing size here" class="input">
+      </div>
+      <div id="description-section" class="input-wrapper">
+        <label for="description-input" class="input-label">Description</label>
+        <textarea name="name" id="description-input" class="input"
+          placeholder="Add condition about condition, additional measurements, shipping policies, etc"></textarea>
+      </div>
+      <div id="price-section" class="input-wrapper">
+        <label for="price" class="input-label">Price</label>
+        <input type="number" name="price" min="0" id="price-input" placeholder="Enter price (IDR)" class="input">
+      </div>
+      <div id="stock-section" class="input-wrapper">
+        <label for="stock" class="input-label">Stock</label>
+        <input type="number" name="stock" min="0" id="stock-input" placeholder="Enter stock" class="input">
+      </div>
+      <div id="image-section" class="w-full">
+        <div class="w-full h-[240px] border border-dashed border-gray-400 flex justify-center items-center rounded-xl">
+          <label for="image-input" class="btn-secondary font-semibold px-4 py-2">
+            Upload image
+          </label>
+          <input type="file" id="image-input" accept="image/*" class="hidden">
+        </div>
+      </div>
+      <div class="flex justify-end gap-4">
+        <button id="cancel-button" class="btn-secondary font-semibold text-lg px-8 py-4 my-4">Cancel</button>
+        <input type="submit" id="save-button" class="btn-primary font-semibold text-lg px-8 py-4 my-4" value="Save"></input>
+      </div>
+    </form>
+  </main>
+</body>
+
+</html>
