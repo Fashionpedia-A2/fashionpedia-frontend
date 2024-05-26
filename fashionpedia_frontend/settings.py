@@ -39,11 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
+    'buy',
     'welcome',
     'profiles',
     'staff_dashboard',
     'sell',
-    'buy',
     'django_prometheus'
 ]
 
@@ -76,6 +76,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
         },
+        'DIRS': [BASE_DIR / 'templates'],
     },
 ]
 
@@ -143,3 +144,8 @@ STATICFILES_DIRS = ('static',)
 
 STATIC_ROOT = 'static/'
 
+
+
+# typically, os.path.join(os.path.dirname(__file__), 'media')
+MEDIA_ROOT =  BASE_DIR / 'media'
+MEDIA_URL = '/media/'
