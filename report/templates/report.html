@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+        }
+        .register-options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .option {
+            position: relative;
+            width: 300px;
+            height: 400px;
+            border-radius: 15px;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-decoration: none;
+            color: inherit;
+        }
+        .option:hover {
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        .option-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-4xl font-bold mb-8">REPORTS</h1>
+        <div class="register-options">
+            <a href="{% url 'get-listing-report' %}" class="option">
+                <div class="option-text">LISTING</div>
+            </a>
+            <a href="{% url 'get-user-report' %}" class="option">
+                <div class="option-text">USER</div>
+            </a>
+        </div>
+    </div>
+
+    
+</body>
+</html>

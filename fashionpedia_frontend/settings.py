@@ -39,12 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
-    'buy',
     'welcome',
+    'buy',
     'profiles',
     'staff_dashboard',
     'sell',
-    'django_prometheus'
+    'report',
+    'django_prometheus',
 ]
 
 MIDDLEWARE = [
