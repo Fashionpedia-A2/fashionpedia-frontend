@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+export function setDropdown() {
   const buttons = document.querySelectorAll('.dropdown-button');
   buttons.forEach(button => {
     const menuId = button.id;
@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const expanded = button.getAttribute('aria-expanded') === 'true';
       button.setAttribute('aria-expanded', !expanded);
       menu.classList.toggle('hidden');
+      console.log('clicked');
     });
 
     document.addEventListener('click', function (event) {
@@ -17,4 +18,5 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   });
-});
+  console.log('dropdown.js loaded');
+}
