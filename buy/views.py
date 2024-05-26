@@ -10,3 +10,6 @@ def detail_listing(request, id):
         'id': id
     }
     return render(request, 'detail_listing.html', context)
+
+def cart(request):
+    return render(request, 'cart.html')

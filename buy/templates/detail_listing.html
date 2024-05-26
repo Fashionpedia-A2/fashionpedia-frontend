@@ -24,7 +24,7 @@
       </div>
 
 
-      <form action="/add-to-cart" method="post">
+      <form id="add-to-cart" method="post">
         <div class="quantity-container">
           <button type="button" class="decrease-btn">-</button>
           <input type="number" id="quantity-input" name="quantity" value="0" min="0">
@@ -37,8 +37,11 @@
   </div>
 
   <script>
-
+  
   $(document).ready(function() {
+
+    
+    // Get all listing details
     var url = "http://api.fashionpedia.my.id/api/v1/buyer/listing";
   
     // Send a POST request
@@ -74,6 +77,38 @@
       error: function(error){
         console.error('Error:', error);
       }
+    });
+
+    // Send POST Request when "add to cart"
+    $('#add-to-cart').submit(function(e) {
+      e.preventDefault();
+
+      var url = "http://api.fashionpedia.my.id/api/v1/buyer/cart/update";
+      var listing_id = "{{ id }}";
+      var quantity = $('#quantity-input').val();
+
+      var data = {
+        listingId: listing_id,
+        quantity: quantity
+      };
+
+      console.log(data)
+      $.ajax({
+        url: url,
+        type: "POST",
+        headers: {
+          'Authorization': 'Bearer ' + token
+        },
+        data: JSON.stringify(data),
+        contentType: "application/json",
+        success: function(data){
+          console.log('Success:', data);
+          alert('Item added to cart');
+        },
+        error: function(error){
+          console.error('Error:', error);
+        }
+      });
     });
   });
 
