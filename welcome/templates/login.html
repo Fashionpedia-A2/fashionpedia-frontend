@@ -118,9 +118,10 @@
             console.log('Password:', password); 
 
             $.ajax({
-                // url: 'http://account.fashionpedia.my.id/auth/login',
+                //url: 'http://account.fashionpedia.my.id/auth/login',
                 // url: 'http://localhost:8080/api/v1/auth/login',
-                url: 'http://localhost:8081/auth/login',
+                //url: 'http://localhost:8081/auth/login',
+                url: 'http://api.fashionpedia.my.id/api/v1/auth/login',
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify({
