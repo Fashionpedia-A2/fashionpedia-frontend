@@ -143,7 +143,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = ('static',)
 
-STATIC_ROOT = ''
+STATIC_ROOT = '/static/'
 
 
 
